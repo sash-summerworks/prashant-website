@@ -32,6 +32,14 @@ public/          # Static assets served as-is (images, CV PDF, favicon)
 
 ---
 
+## Development
+
+- Node version is pinned in `.nvmrc` (26). Match it in Vercel's project settings.
+- Start the dev server in the background: `npx astro dev --background`. Manage it with `npx astro dev stop | status | logs`. Astro 7 does this automatically when an AI agent runs it, and that's why Playwright's server passes `--ignore-lock` to stay in the foreground.
+- Astro docs to read before related work: [routing](https://docs.astro.build/en/guides/routing/), [components](https://docs.astro.build/en/basics/astro-components/), [content collections](https://docs.astro.build/en/guides/content-collections/), [styling and Tailwind](https://docs.astro.build/en/guides/styling/).
+
+---
+
 ## Code conventions
 
 See `.claude/rules/` for detailed rules:
@@ -49,9 +57,14 @@ See `.claude/rules/` for detailed rules:
 - **Components:** rendered in Vitest with the Astro Container API. Assert on output HTML, not implementation.
 - **End to end:** Playwright for key journeys: landing pages load, navigation works, contact form submits.
 
-Run tests: `npm test` [PROJECT: confirm once the Astro project is set up]
+- `npm test`: Vitest, unit and component tests (`src/**/*.test.ts`)
+- `npm run test:watch`: Vitest in watch mode, for the TDD loop
+- `npm run test:e2e`: Playwright (`e2e/*.spec.ts`), starts the dev server itself
+- `npm run build`: production build
 
-Pre-push hook: [PROJECT: add once the test setup exists — runs `npm test` and blocks the push on failure]
+Page tests go in `src/pages/_tests/`, never next to the page. Astro treats any `.ts` file in `src/pages/` as a route, and folders starting with `_` are ignored.
+
+Pre-push hook: `.githooks/pre-push` runs unit tests, E2E tests and the build, and blocks the push on failure. `npm install` turns it on (the `prepare` script sets `core.hooksPath`).
 
 ---
 

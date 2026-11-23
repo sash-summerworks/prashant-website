@@ -23,7 +23,8 @@ All code is test-driven: failing test → minimum code to pass → refactor. No 
 | Content entries | kebab-case | `src/content/experience/bbc-producer.md` |
 | Types/interfaces | PascalCase | `ExperienceEntry` |
 | Constants | SCREAMING_SNAKE_CASE | `MIN_SUBMIT_SECONDS` |
-| Tests | same name + `.test.ts`, next to the file | `formatDateRange.test.ts` |
+| Tests | same name + `.test.ts`, next to the file (page tests go in `src/pages/_tests/`, because `.ts` files in `src/pages/` become routes) | `formatDateRange.test.ts` |
+| E2E tests | kebab-case `.spec.ts` in `e2e/` | `e2e/contact-form.spec.ts` |
 
 ## File organisation
 

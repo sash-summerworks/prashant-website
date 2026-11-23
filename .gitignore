@@ -1,2 +1,29 @@
 .claude/settings.local.json
 .claude/worktrees/
+
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# Vercel
+.vercel/
+
+# macOS
+.DS_Store
+
+# test output
+test-results/
+playwright-report/
+coverage/

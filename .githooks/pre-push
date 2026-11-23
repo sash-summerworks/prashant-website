@@ -1,0 +1,9 @@
+#!/bin/sh
+# Blocks the push if unit tests, end-to-end tests or the build fail.
+set -e
+echo "pre-push: unit tests"
+npm test
+echo "pre-push: end-to-end tests"
+npm run test:e2e
+echo "pre-push: build"
+npm run build
