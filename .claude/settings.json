@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Bash(DROP TABLE*)",
+      "Bash(DROP DATABASE*)",
+      "Bash(git checkout -- .)"
+    ]
+  },
+  "enabledPlugins": {
+    "feature-dev@claude-code-plugins": true,
+    "security-guidance@claude-code-plugins": true,
+    "superpowers@anthropic-plugin-directory": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    }
+  }
+}
